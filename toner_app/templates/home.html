@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="form-group">
+    <h2>Toner: Escolha uma opção</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div>
+        <button type="submit" name="action" value="retirar">Retirar</button>
+        <button type="submit" name="action" value="devolver">Devolver</button>
+      </div>
+      {% if options %}
+      <div class="form-group">
+        <label for="toner">Selecione um toner:</label>
+        <select name="toner" id="toner">
+          {% for option in options %}
+            <option value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="btn">Confirmar</button>
+      </div>
+      {% endif %}
+    </form>
+  </div>
+{% endblock %}
