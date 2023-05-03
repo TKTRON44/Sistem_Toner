@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Toner
 from .forms import SelectTonerForm
+from django.http import JsonResponse
 
 def home(request):
     return render(request, 'home.html')
@@ -20,3 +21,8 @@ def confirm_toner(request, toner_id):
     toner.quantity -= 1
     toner.save()
     return render(request, 'confirm_toner.html', {'toner': toner})
+
+def toner_list(request):
+    toners = Toner.objects.all()
+    data = [{'model': toner.model, 'quantity': toner.quantity} for toner in toners]
+    return JsonResponse(data, safe=False)

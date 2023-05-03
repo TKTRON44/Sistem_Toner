@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('select_toner/', views.select_toner, name='select_toner'),
     path('confirm_toner/<int:toner_id>/', views.confirm_toner, name='confirm_toner'),
+    path('toners/', views.toner_list, name='toner_list'),
 ]
 
 from django.conf import settings
