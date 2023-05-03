@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Toner
 from .forms import SelectTonerForm
 from django.http import JsonResponse
+from django.shortcuts import render
+from toner_app.models import Toner
+
 
 def home(request):
     return render(request, 'home.html')
@@ -26,3 +29,10 @@ def toner_list(request):
     toners = Toner.objects.all()
     data = [{'model': toner.model, 'quantity': toner.quantity} for toner in toners]
     return JsonResponse(data, safe=False)
+
+def retirada_devolucao(request):
+    toners = Toner.objects.all()
+
+    context = {'toners': toners}
+
+    return render(request, 'retirada_devolucao.html', context)

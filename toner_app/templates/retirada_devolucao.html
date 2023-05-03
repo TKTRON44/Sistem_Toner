@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Retirada ou Devolução de Toners</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+      var tonersSelecionados = [];
+
+      $(document).ready(function() {
+        $("#btn-add-toner").click(function() {
+          $("#dialog-select-toner").dialog("open");
+        });
+
+        $("#btn-confirmar-toner").click(function() {
+          adicionarToner();
+          $("#dialog-select-toner").dialog("close");
+        });
+
+        $("#dialog-select-toner").dialog({
+          autoOpen: false,
+          modal: true,
+          buttons: {
+            "Confirmar": function() {
+              adicionarToner();
+              $(this).dialog("close");
+            },
+            "Cancelar": function() {
+              $(this).dialog("close");
+            }
+          }
+        });
+      });
+
+      function adicionarToner() {
+        var toner = $("#select-toner").val();
+        tonersSelecionados.push(toner);
+        exibirTonersSelecionados();
+      }
+
+      function exibirTonersSelecionados() {
+        $("#toners-selecionados").empty();
+        for (var i = 0; i < tonersSelecionados.length; i++) {
+          $("#toners-selecionados").append("<li>" + tonersSelecionados[i] + "</li>");
+        }
+      }
+    </script>
+</head>
+<body>
+  <button id="btn-add-toner">Adicionar mais um</button>
+
+  <div id="dialog-select-toner" title="Selecionar toner" style="display: none;">
+    <form>
+      <fieldset>
+        <label for="select-toner">Escolha um toner:</label>
+        <select name="select-toner" id="select-toner">
+          <option value="toner1">Toner 1</option>
+          <option value="toner2">Toner 2</option>
+          <option value="toner3">Toner 3</option>
+          <option value="toner4">Toner 4</option>
+        </select>
+      </fieldset>
+    </form>
+  </div>
+
+  <ul id="toners-selecionados"></ul>
+
+  <a href="{% url 'retirada_devolucao' %}">Retirada e Devolução</a>
+
+  </body>
+</html>
