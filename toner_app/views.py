@@ -36,3 +36,21 @@ def retirada_devolucao(request):
     context = {'toners': toners}
 
     return render(request, 'retirada_devolucao.html', context)
+
+def index(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'retirar':
+            # lógica para retirar o toner
+            pass
+        elif action == 'devolver':
+            # lógica para devolver o toner
+            pass
+        else:
+            # lógica para confirmar a seleção do toner
+            toner_id = request.POST.get('toner')
+            toner = Toner.objects.get(id=toner_id)
+            return render(request, 'confirm.html', {'toner': toner})
+    else:
+        options = Toner.objects.all()
+        return render(request, 'index.html', {'options': options})

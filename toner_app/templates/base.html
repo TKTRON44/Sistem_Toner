@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/jqueryui/jquery-ui.min.js"></script>
+  <script src="{% static 'node_modules/jqueryui/external/jquery.js' %}"></script>
+  <script src="{% static 'node_modules/jqueryui/jquery-ui.min.js' %}"></script>
 </head>
 <body>
   {% block content %}

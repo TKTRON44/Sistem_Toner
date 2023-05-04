@@ -67,5 +67,32 @@
 
   <a href="{% url 'retirada_devolucao' %}">Retirada e Devolução</a>
 
+  <div id="toner-list"></div>
+  <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/toner_list/',
+            dataType: 'json',
+            success: function(data) {
+                var toners = data;
+                var list = $('#toner-list');
+                var table = $('<table>');
+                table.append('<tr><th>Modelo</th><th>Quantidade</th></tr>');
+                for (var i = 0; i < toners.length; i++) {
+                    var row = $('<tr>');
+                    row.append($('<td>').text(toners[i].model));
+                    row.append($('<td>').text(toners[i].quantity));
+                    table.append(row);
+                }
+                list.append(table);
+            },
+            error: function() {
+                alert('Erro ao carregar a lista de toners!');
+            }
+        });
+    });
+</script>
+
+
   </body>
 </html>

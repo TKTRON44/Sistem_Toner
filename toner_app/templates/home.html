@@ -21,5 +21,18 @@
       </div>
       {% endif %}
     </form>
+    <script>
+      $(document).ready(function() {
+        $('form').submit(function() {
+          var action = $('button[type="submit"]:focus').val();
+          if (action == 'retirar') {
+            alert('Você clicou em Retirar!');
+          } else if (action == 'devolver') {
+            alert('Você clicou em Devolver!');
+          }
+        });
+      });
+      </script>
+      
   </div>
 {% endblock %}
