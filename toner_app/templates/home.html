@@ -6,8 +6,9 @@
     <form method="post">
       {% csrf_token %}
       <div>
-        <button type="submit" name="action" value="retirar">Retirar</button>
-        <button type="submit" name="action" value="devolver">Devolver</button>
+        <button type="button" onclick="location.href='{% url 'toner_list' %}'" class="btn btn-primary">Retirar</button>
+        <button type="button" onclick="location.href='{% url 'toner_list' %}'" class="btn btn-primary">Devolver</button>
+
       </div>
       {% if options %}
       <div class="form-group">

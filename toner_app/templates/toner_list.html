@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <th>Modelo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for toner in toners %}
+    <tr>
+      <td>{{ toner.model }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

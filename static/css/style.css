@@ -1,6 +1,6 @@
 body {
-  background-color: #EBF5EE;
-  color: #0B3954;
+  background-color: #000000;
+  color: #8CFF98;
   font-family: sans-serif;
   font-size: 16px;
 }
@@ -35,8 +35,8 @@ body {
   margin-bottom: 10px;
 }
 
-.form-group button[type="submit"] {
-  background-color: #0B3954;
+.btn {
+  background-color: #8CFF98;
   color: #FFFDED;
   border: none;
   padding: 12px 24px;
@@ -44,7 +44,11 @@ body {
   cursor: pointer;
   margin-right: 20px auto 0;
   font-size: 20px;
+}
 
+.btn-primary {
+  background-color: #8CFF98;
+  color: #000000;
 }
 
 .form-group button.btn {
