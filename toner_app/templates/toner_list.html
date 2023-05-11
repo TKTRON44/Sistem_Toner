@@ -1,3 +1,13 @@
+<!-- toner_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/toner_list.css' %}">
+</head>
+
+<body>
+  <a href="{% url 'home' %}" class="back-button">⮜</a>
 <table>
   <thead>
     <tr>
@@ -5,10 +15,21 @@
     </tr>
   </thead>
   <tbody>
-    {% for toner in toners %}
     <tr>
-      <td>{{ toner.model }}</td>
+      <td>
+        <div class="dropdown">
+          <button class="dropdown-btn">Escolha o Toner</button>
+          <div class="dropdown-content">
+            {% for toner in toners %}
+              <a href="#" class="toner-option">{{ toner.model }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </td>
     </tr>
-    {% endfor %}
   </tbody>
 </table>
+
+<script src="{% static 'js/toner_list.js' %}"></script>
+</body>
+</html>

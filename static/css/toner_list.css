@@ -1,0 +1,164 @@
+/* static/css/toner_list.css */
+
+body {
+  background-color: #000000;
+  color: #8CFF98;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.form-group:before {
+  content: "";
+  flex-grow: 1;
+}
+
+.form-group:after {
+  content: "";
+  flex-grow: 1;
+}
+
+
+.form-group h1 {
+  text-align: center;
+  margin-bottom: 28px;
+  color: #8CFF98;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #8CFF98;
+}
+
+.form-group select {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: #8CFF98;
+  color: #FFFDED;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px auto 0;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background-color: #8CFF98;
+  color: #000000;
+}
+
+.form-group button.btn {
+  display: block;
+  margin: 20px auto 0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #8CFF98;
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #b5e4ba;
+  border: 1px solid #ccc;
+  padding: 8px;
+  min-width: 200px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease; 
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  margin-top: 5px;
+}
+
+.dropdown-content.show {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.dropdown-content a:hover {
+  background-color: #8CFF98;
+}
+
+.dropdown:hover .dropdown-btn {
+  background-color: #69f177;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #8CFF98;
+  color: #000000;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 28px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button:hover {
+  background-color: #69f177;
+}
+
+.back-button:before {
+  font-size: 40px;
+}
+
+.back-button {
+  width: 25px;
+  height: 25px;
+}
