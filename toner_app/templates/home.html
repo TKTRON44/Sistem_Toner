@@ -1,39 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="form-group">
+  <div class="form-group fade-in">
     <h2>Toner: Escolha uma opção</h2>
-    <form method="post">
+    <form method="post" action="{% url 'toner_list' %}">
       {% csrf_token %}
       <div>
-        <button type="button" onclick="location.href='{% url 'toner_list' %}'" class="btn btn-primary">Retirar</button>
-        <button type="button" onclick="location.href='{% url 'toner_list' %}'" class="btn btn-primary">Devolver</button>
-
+        <button type="submit" name="action" value="retirar" class="btn btn-primary">Retirar</button>
+        <button type="submit" name="action" value="devolver" class="btn btn-primary">Devolver</button>
       </div>
       {% if options %}
       <div class="form-group">
         <label for="toner">Selecione um toner:</label>
         <select name="toner" id="toner">
           {% for option in options %}
-            <option value="{{ option }}">{{ option }}</option>
+            <option value="{{ option.id }}">{{ option.model }}</option>
           {% endfor %}
         </select>
         <button type="submit" class="btn">Confirmar</button>
       </div>
       {% endif %}
     </form>
-    <script>
-      $(document).ready(function() {
-        $('form').submit(function() {
-          var action = $('button[type="submit"]:focus').val();
-          if (action == 'retirar') {
-            alert('Você clicou em Retirar!');
-          } else if (action == 'devolver') {
-            alert('Você clicou em Devolver!');
-          }
-        });
-      });
-      </script>
-      
   </div>
 {% endblock %}

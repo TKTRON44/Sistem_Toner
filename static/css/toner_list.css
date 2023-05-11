@@ -131,6 +131,7 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  opacity: 1;
 }
 
 .back-button {
@@ -162,3 +163,4 @@ body {
   width: 25px;
   height: 25px;
 }
+

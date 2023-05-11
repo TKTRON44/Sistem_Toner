@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Toner
 from .forms import SelectTonerForm
-from django.http import JsonResponse
-from django.shortcuts import render
-from toner_app.models import Toner
-
+from django.http import HttpResponse
 
 def home(request):
     return render(request, 'home.html')
@@ -27,15 +24,22 @@ def confirm_toner(request, toner_id):
 
 def toner_list(request):
     toners = Toner.objects.all()
-    data = [{'model': toner.model, 'quantity': toner.quantity} for toner in toners]
-    return JsonResponse(data, safe=False)
+    return render(request, 'toner_list.html', {'toners': toners})
 
-def retirada_devolucao(request):
-    toners = Toner.objects.all()
+def subtract_toner(request):
+    if request.method == 'POST':
+        toner_id = request.POST.get('toner_id')
+        action = request.POST.get('action')
 
-    context = {'toners': toners}
+        toner = Toner.objects.get(id=toner_id)
+        if action == 'subtract':
+            toner.quantity -= 1
+        elif action == 'add':
+            toner.quantity += 1
 
-    return render(request, 'retirada_devolucao.html', context=context)
+        toner.save()
+
+        return HttpResponse('Ação concluída com sucesso')
 
 def index(request):
     if request.method == 'POST':
@@ -47,11 +51,7 @@ def index(request):
         else:
             toner_id = request.POST.get('toner')
             toner = Toner.objects.get(id=toner_id)
-            return render(request, 'confirm.html', {'toner': toner})
+            return redirect('toner_list')  # Redireciona para toner_list.html
     else:
         options = Toner.objects.all()
         return render(request, 'index.html', {'options': options})
-    
-def toner_list(request):
-    toners = Toner.objects.all()
-    return render(request, 'toner_list.html', {'toners': toners})
